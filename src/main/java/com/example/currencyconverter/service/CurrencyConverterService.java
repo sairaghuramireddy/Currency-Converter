@@ -8,8 +8,7 @@ public class CurrencyConverterService {
 
     private final RestTemplate restTemplate;
     
-    // Use an API URL of your choice that provides currency exchange rates
-    private static final String API_URL = "https://api.exchangerate-api.com/v4/latest/USD"; // Example API
+    private static final String API_URL = "https://api.exchangerate-api.com/v4/latest/USD";
 
     public CurrencyConverterService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -17,8 +16,8 @@ public class CurrencyConverterService {
 
     public Double convertUsdToInr(Double amountInUsd) {
         ExchangeRateResponse response = restTemplate.getForObject(API_URL, ExchangeRateResponse.class);
-        if (response != null && response.getRates().containsKey("INR")) {
-            Double exchangeRate = response.getRates().get("INR");
+        if (response != null && response.getRates().containsKey("GBP")) {
+            Double exchangeRate = response.getRates().get("GBP");
             return amountInUsd * exchangeRate;
         }
         throw new RuntimeException("Unable to fetch exchange rate.");
