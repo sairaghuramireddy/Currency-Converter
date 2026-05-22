@@ -16,8 +16,8 @@ public class CurrencyConverterService {
 
     public Double convertUsdToInr(Double amountInUsd) {
         ExchangeRateResponse response = restTemplate.getForObject(API_URL, ExchangeRateResponse.class);
-        if (response != null && response.getRates().containsKey("GBP")) {
-            Double exchangeRate = response.getRates().get("GBP");
+        if (response != null && response.getRates().containsKey("YEN")) {
+            Double exchangeRate = response.getRates().get("YEN");
             return amountInUsd * exchangeRate;
         }
         throw new RuntimeException("Unable to fetch exchange rate.");
